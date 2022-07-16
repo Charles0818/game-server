@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  game_service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: dev
+    image: game_service
+    container_name: game_service
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    environment:
+      - PGHOST=host.docker.internal
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./src:/usr/game_service/src
+    command: bash -c "yarn migrate && yarn start:dev"
+    networks:
+      - whatwapp-network
+
+  postgres:
+    container_name: postgres_db_container
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
+      PGDATA: /data/postgres
+    volumes:
+      - ./db:/data/postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - whatwapp-network
+    restart: unless-stopped
+
+networks:
+  whatwapp-network:
+    driver: bridge
