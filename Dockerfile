@@ -18,6 +18,7 @@ COPY nest-cli.json \
     .eslintrc.js \
     .prettierrc \
     ./
+ENV NODE_ENV=development
 # bring in src from context
 COPY ./src/ ./src
 RUN yarn
@@ -31,6 +32,7 @@ COPY --from=base /usr/game_service/ ./
 # get the dist back
 COPY --from=dev /usr/game_service/dist/ ./dist/
 COPY --from=dev /usr/game_service/.env ./.env
+ENV NODE_ENV=production
 # get the node_modules from the intial cache
 COPY --from=base /usr/game_service/node_modules/ ./node_modules/
 
