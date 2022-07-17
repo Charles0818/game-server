@@ -8,6 +8,7 @@ export const envValidationSchema = joi
     PGUSER: joi.string().required(),
     PGPASSWORD: joi.string().required(),
     PGDATABASE: joi.string().required(),
+    JWT_SECRET: joi.string().required(),
   })
   .unknown()
   .required();
