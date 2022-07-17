@@ -8,6 +8,7 @@ import authConfig from './config/auth.config';
 import dbConfig from './config/db.config';
 import { envValidationSchema } from './config/env.validate';
 import { UserModule } from './user/user.module';
+import { WalletModule } from './wallet/wallet.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { UserModule } from './user/user.module';
       inject: [ConfigService],
     }),
     UserModule,
+    WalletModule,
     EventEmitterModule.forRoot({ global: true }),
   ],
   controllers: [AppController],
