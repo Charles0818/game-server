@@ -55,7 +55,9 @@ export class UserModel extends BaseEntity {
   @Column({ type: 'text', nullable: false, select: false })
   password: string;
 
-  @OneToMany(() => UserClubModel, (userClub) => userClub.user, { eager: true })
+  @OneToMany(() => UserClubModel, (userClub) => userClub.user, {
+    nullable: true,
+  })
   @IsOptional()
   @ValidateNested()
   clubs: UserClubModel[];

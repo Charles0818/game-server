@@ -13,6 +13,7 @@ import { CreateUserDto } from '../dtos/createUser.dto';
 import { LoginDto } from '../dtos/login.dto';
 import { UserModel } from '../models/user.model';
 import * as bcrypt from 'bcrypt';
+import { adminUser } from '../data/adminUser.seeder';
 
 @Injectable()
 export class UserService {
@@ -91,6 +92,13 @@ export class UserService {
       throw new UnprocessableEntityException(
         'Email or phone number already exists',
       );
+  }
+
+  async getAdminAccount() {
+    const admin = await this.manager.findOne(UserModel, {
+      where: { email: adminUser.email },
+    });
+    return admin;
   }
 
   async matchesHash(plainPassword: string, hash: string): Promise<boolean> {
