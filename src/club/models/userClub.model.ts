@@ -22,17 +22,17 @@ export class UserClubModel {
   @JoinColumn({ name: 'user' })
   user: UserModel;
 
-  @ManyToOne(() => ClubModel, (club) => club.users, { eager: true })
+  @ManyToOne(() => ClubModel, (club) => club.users)
   @JoinColumn({ name: 'club' })
   club: ClubModel;
 
-  @CreateDateColumn({ name: 'created_date' })
+  @CreateDateColumn()
   @Type(() => Date)
-  createdDate: Date;
+  createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_date' })
+  @UpdateDateColumn()
   @Type(() => Date)
-  updatedDate: Date;
+  updatedAt: Date;
 
   constructor(userClub: Partial<UserClubModel>) {
     Object.assign(this, userClub);

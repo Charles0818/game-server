@@ -31,11 +31,11 @@ export class ClubModel extends BaseEntity {
   })
   maxMembers: number;
 
-  @ManyToOne(() => UserModel, { nullable: false })
+  @ManyToOne(() => UserModel, (user) => user, { nullable: false })
   @JoinColumn({ name: 'owner' })
   owner: UserModel;
 
-  @OneToMany((type) => UserClubModel, (user) => user, { nullable: true })
+  @OneToMany((type) => UserClubModel, (user) => user.club, { nullable: true })
   @JoinColumn({ name: 'users' })
   users: UserClubModel[];
 
