@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { OnEvent } from '@nestjs/event-emitter';
 import { UserModel } from 'src/user/models/user.model';
 import { EventConstants } from 'src/utilities/eventConstants';
@@ -34,5 +38,25 @@ export class WalletService {
     } catch (error) {
       throw error;
     }
+  }
+
+  async transactCurrency(
+    amount: number,
+    type: 'softCurrency' | 'hardCurrency',
+    sender: UserModel,
+    receiver: UserModel,
+  ) {
+    const senderWallet = await this.manager.findOne(WalletModel, {
+      where: { user: sender.id },
+    });
+    const receiverWallet = await this.manager.findOne(WalletModel, {
+      where: { user: receiver.id },
+    });
+    if (senderWallet[type] < amount)
+      throw new BadRequestException('Insufficient balance');
+    senderWallet[type] -= amount;
+    receiverWallet[type] += amount;
+    await this.manager.save(senderWallet);
+    await this.manager.save(receiverWallet);
   }
 }
