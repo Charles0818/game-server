@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { IsEmpty, IsUUID } from 'class-validator';
+import { IsEmpty, IsOptional, IsUUID, ValidateNested } from 'class-validator';
+import { UserClubModel } from 'src/club/models/userClub.model';
 import { WalletModel } from 'src/wallet/models/wallet.model';
 import {
   Entity,
@@ -9,6 +10,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
+  OneToMany,
 } from 'typeorm';
 
 export enum GenderTypes {
@@ -52,6 +54,11 @@ export class UserModel extends BaseEntity {
   @Exclude()
   @Column({ type: 'text', nullable: false, select: false })
   password: string;
+
+  @OneToMany(() => UserClubModel, (userClub) => userClub.user, { eager: true })
+  @IsOptional()
+  @ValidateNested()
+  clubs: UserClubModel[];
 
   @CreateDateColumn()
   createdAt: Date;
