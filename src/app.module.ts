@@ -10,6 +10,7 @@ import { envValidationSchema } from './config/env.validate';
 import { UserModule } from './user/user.module';
 import { WalletModule } from './wallet/wallet.module';
 import { ClubModule } from './club/club.module';
+import { DonationModule } from './donation/donation.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ClubModule } from './club/club.module';
     WalletModule,
     EventEmitterModule.forRoot({ global: true }),
     ClubModule,
+    DonationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
