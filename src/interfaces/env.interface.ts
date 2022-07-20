@@ -3,4 +3,5 @@ export interface ENV {
   PGUSER: string;
   PGPASSWORD: string;
   PGDATABASE: string;
+  JWT_SECRET: string;
 }
