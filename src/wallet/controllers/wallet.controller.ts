@@ -1,8 +1,8 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AuthUser } from 'src/user/decorators/auth-user.decorator';
-import { UserAuthGuard } from 'src/user/guards/user.guard';
-import { UserModel } from 'src/user/models/user.model';
+import { AuthUser } from '../../user/decorators/auth-user.decorator';
+import { UserAuthGuard } from '../../user/guards/user.guard';
+import { UserModel } from '../../user/models/user.model';
 import { WalletService } from '../services/wallet.service';
 
 @ApiTags('Wallet')

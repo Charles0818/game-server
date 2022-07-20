@@ -4,12 +4,12 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { ClubService } from 'src/club/services/club.service';
-import { UserModel } from 'src/user/models/user.model';
-import { getPaginationParams } from 'src/utilities/pagination';
-import { SuccessResponse } from 'src/utilities/succcessResponse';
-import { WalletModel } from 'src/wallet/models/wallet.model';
-import { WalletService } from 'src/wallet/services/wallet.service';
+import { ClubService } from '../../club/services/club.service';
+import { UserModel } from '../../user/models/user.model';
+import { getPaginationParams } from '../../utilities/pagination';
+import { SuccessResponse } from '../../utilities/succcessResponse';
+import { WalletModel } from '../../wallet/models/wallet.model';
+import { WalletService } from '../../wallet/services/wallet.service';
 import { EntityManager } from 'typeorm';
 import { DonationRequestsFilter } from '../dtos/donationRequestsFilter.dto';
 import { DonationRequestsModel } from '../models/donationRequests.model';

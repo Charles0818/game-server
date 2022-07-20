@@ -1,5 +1,5 @@
 import { IsEmpty, IsUUID } from 'class-validator';
-import { UserModel } from 'src/user/models/user.model';
+import { UserModel } from '../../user/models/user.model';
 import {
   BaseEntity,
   Column,

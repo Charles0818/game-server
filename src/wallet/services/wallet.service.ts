@@ -4,9 +4,9 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { OnEvent } from '@nestjs/event-emitter';
-import { UserModel } from 'src/user/models/user.model';
-import { EventConstants } from 'src/utilities/eventConstants';
-import { SuccessResponse } from 'src/utilities/succcessResponse';
+import { UserModel } from '../../user/models/user.model';
+import { EventConstants } from '../../utilities/eventConstants';
+import { SuccessResponse } from '../../utilities/succcessResponse';
 import { EntityManager } from 'typeorm';
 import { WalletModel } from '../models/wallet.model';
 
