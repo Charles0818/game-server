@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional } from 'class-validator';
-import { PaginationFilterDto } from 'src/utilities/pagination';
+import { PaginationFilterDto } from '../../utilities/pagination';
 
 export class DonationRequestsFilter extends PaginationFilterDto {
   @ApiPropertyOptional({ enum: ['true', 'false'] })

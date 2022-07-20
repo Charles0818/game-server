@@ -1,7 +1,7 @@
 import { Exclude } from 'class-transformer';
 import { IsEmpty, IsOptional, IsUUID, ValidateNested } from 'class-validator';
-import { UserClubModel } from 'src/club/models/userClub.model';
-import { WalletModel } from 'src/wallet/models/wallet.model';
+import { UserClubModel } from '../../club/models/userClub.model';
+import { WalletModel } from '../../wallet/models/wallet.model';
 import {
   Entity,
   Column,

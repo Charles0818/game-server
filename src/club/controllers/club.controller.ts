@@ -9,10 +9,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AuthUser } from 'src/user/decorators/auth-user.decorator';
-import { UserAuthGuard } from 'src/user/guards/user.guard';
-import { UserModel } from 'src/user/models/user.model';
-import { PaginationFilterDto } from 'src/utilities/pagination';
+import { AuthUser } from '../../user/decorators/auth-user.decorator';
+import { UserAuthGuard } from '../../user/guards/user.guard';
+import { UserModel } from '../../user/models/user.model';
+import { PaginationFilterDto } from '../../utilities/pagination';
 import { CreateClubDto, createClubExample } from '../dtos/createClub.dto';
 import { SendMessageDto, sendMessageExample } from '../dtos/sendMessage.dto';
 import { ClubService } from '../services/club.service';

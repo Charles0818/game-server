@@ -9,16 +9,10 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiBody,
-  ApiOperation,
-  ApiQuery,
-  ApiTags,
-} from '@nestjs/swagger';
-import { AuthUser } from 'src/user/decorators/auth-user.decorator';
-import { UserAuthGuard } from 'src/user/guards/user.guard';
-import { UserModel } from 'src/user/models/user.model';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthUser } from '../../user/decorators/auth-user.decorator';
+import { UserAuthGuard } from '../../user/guards/user.guard';
+import { UserModel } from '../../user/models/user.model';
 import { DonationRequestsFilter } from '../dtos/donationRequestsFilter.dto';
 import {
   RequestDonationDto,

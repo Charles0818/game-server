@@ -1,7 +1,7 @@
 import { Type } from 'class-transformer';
 import { IsEmpty, IsUUID } from 'class-validator';
-import { ClubModel } from 'src/club/models/clubs.model';
-import { UserModel } from 'src/user/models/user.model';
+import { ClubModel } from '../../club/models/clubs.model';
+import { UserModel } from '../../user/models/user.model';
 import {
   Column,
   CreateDateColumn,

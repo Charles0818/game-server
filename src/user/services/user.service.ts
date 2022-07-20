@@ -6,8 +6,8 @@ import {
 } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { JwtService } from '@nestjs/jwt';
-import { EventConstants } from 'src/utilities/eventConstants';
-import { SuccessResponse } from 'src/utilities/succcessResponse';
+import { EventConstants } from '../../utilities/eventConstants';
+import { SuccessResponse } from '../../utilities/succcessResponse';
 import { EntityManager } from 'typeorm';
 import { CreateUserDto } from '../dtos/createUser.dto';
 import { LoginDto } from '../dtos/login.dto';

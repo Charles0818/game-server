@@ -4,14 +4,14 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UserModel } from 'src/user/models/user.model';
-import { UserService } from 'src/user/services/user.service';
+import { UserModel } from '../../user/models/user.model';
+import { UserService } from '../../user/services/user.service';
 import {
   getPaginationParams,
   PaginationFilterDto,
-} from 'src/utilities/pagination';
-import { SuccessResponse } from 'src/utilities/succcessResponse';
-import { WalletService } from 'src/wallet/services/wallet.service';
+} from '../../utilities/pagination';
+import { SuccessResponse } from '../../utilities/succcessResponse';
+import { WalletService } from '../../wallet/services/wallet.service';
 import { EntityManager, getConnection } from 'typeorm';
 import { CreateClubDto } from '../dtos/createClub.dto';
 import { SendMessageDto } from '../dtos/sendMessage.dto';
