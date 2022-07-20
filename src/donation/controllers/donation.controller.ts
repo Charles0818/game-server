@@ -9,30 +9,51 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOperation,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
 import { AuthUser } from 'src/user/decorators/auth-user.decorator';
 import { UserAuthGuard } from 'src/user/guards/user.guard';
 import { UserModel } from 'src/user/models/user.model';
 import { DonationRequestsFilter } from '../dtos/donationRequestsFilter.dto';
-import { RequestDonationDto } from '../dtos/requestDonation.dto';
+import {
+  RequestDonationDto,
+  requestDonationExample,
+} from '../dtos/requestDonation.dto';
 import { DonationService } from '../services/donation.service';
 
+@ApiTags('Donations')
+@ApiBearerAuth()
 @UseGuards(UserAuthGuard)
 @Controller('donations')
 export class DonationController {
   constructor(private readonly donationService: DonationService) {}
 
-  @Post('')
+  @ApiOperation({ summary: 'Request donation from members in your club' })
+  @ApiBody({
+    type: RequestDonationDto,
+    examples: {
+      value: { summary: 'Donation Request', value: requestDonationExample },
+    },
+  })
+  @Post('club/:clubId')
   async requestDonation(
+    @Param('clubId', new ParseUUIDPipe()) clubId: string,
     @Body() body: RequestDonationDto,
     @AuthUser() user: UserModel,
   ) {
     return this.donationService.requestDonation(
-      body.clubId,
+      clubId,
       body.softCurrency,
       user,
     );
   }
 
+  @ApiOperation({ summary: 'List club donation requests' })
   @Get('club/:clubId')
   async listClubDonationRequests(
     @Param('clubId', new ParseUUIDPipe()) clubId: string,
@@ -41,6 +62,7 @@ export class DonationController {
     return this.donationService.listClubDonationRequests(clubId, filter);
   }
 
+  @ApiOperation({ summary: 'Fulfill donation request' })
   @Put(':requestId')
   async fulfillDonationRequest(
     @Param('requestId', new ParseUUIDPipe()) requestId: string,
@@ -49,6 +71,7 @@ export class DonationController {
     return this.donationService.fulfillDonationRequest(requestId, user);
   }
 
+  @ApiOperation({ summary: 'Get a donation request' })
   @Get(':requestId')
   async getDonationRequest(
     @Param('requestId', new ParseUUIDPipe()) requestId: string,

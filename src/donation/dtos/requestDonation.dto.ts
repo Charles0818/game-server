@@ -1,13 +1,14 @@
-import { IsDefined, IsNotEmpty, IsNumber, IsUUID } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsDefined, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class RequestDonationDto {
-  @IsUUID()
-  @IsDefined()
-  @IsNotEmpty()
-  clubId: string;
-
+  @ApiProperty()
   @IsNumber()
   @IsDefined()
   @IsNotEmpty()
   softCurrency: number;
 }
+
+export const requestDonationExample: RequestDonationDto = {
+  softCurrency: 10,
+};
