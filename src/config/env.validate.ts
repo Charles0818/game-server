@@ -1,5 +1,4 @@
 import * as joi from '@hapi/joi';
-console.log('var', process.env);
 // validating environment variables
 export const envValidationSchema = joi
   .object({
